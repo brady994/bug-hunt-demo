@@ -1,0 +1,21 @@
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f4f9;
+  color: #333;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+.challenge {
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input, select, button {
+  margin: 5px;
+}
