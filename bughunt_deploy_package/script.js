@@ -11,13 +11,15 @@ function runChallenge1() {
 }
 
 function runChallenge2() {
-  const age = parseInt(document.getElementById("age2").value);
-  const condition = document.getElementById("condition2").value;
+  const checkbox = document.getElementById("coverageBox");
+  const input = checkbox.value; // Buggy usage
 
-  if (age >= 18 && age <= 65 && condition === false)
-    document.getElementById("output2").textContent = "Eligible: true";
-  else
-    document.getElementById("output2").textContent = "Eligible: false";
+  const result = isCoverageSelected(input); // intentionally wrong
+  document.getElementById("output2").textContent = `Coverage selected: ${result}`;
+}
+
+function isCoverageSelected(input) {
+  return input === true;
 }
 
 function runChallenge3() {
@@ -40,9 +42,9 @@ function revealBug(id) {
     1: `💡 Bug: 'basePremium =+ 300;' actually resets the value instead of adding to it.
 ✅ Fix: Use 'basePremium += 300;' to correctly increment.
 🏦 Impact: Undercharges high-risk clients and affects revenue.`,
-    2: `💡 Bug: 'condition === false' fails if the value is a string ("false").
-✅ Fix: Ensure boolean type, or use String(condition).toLowerCase() === "false".
-⚠️ Impact: Could approve ineligible clients, a compliance risk.`,
+    2: `💡Bug: 'input === true' always fails when checking a checkbox, because form inputs return strings like "on" not booleans.
+✅ Fix: Use 'checkbox.checked' to correctly get a true/false result.
+🏦 Impact: Users may think they've added extra coverage, but the system silently ignores it—leading to trust issues and possible legal risk.`,
     3: `💡 Bug: Plan input is case-sensitive ("Premium" !== "premium").
 ✅ Fix: Normalize input with plan.toLowerCase().
 📉 Impact: Customer may receive wrong coverage if input mismatches.`

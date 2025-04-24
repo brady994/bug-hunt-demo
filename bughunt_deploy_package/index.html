@@ -40,18 +40,16 @@ function calculatePremium(age, isSmoker) {
       <div id="bug1" class="bug-description"></div>
     </section>
 
-    <section class="challenge">
-      <h2>Challenge 2: Eligibility Checker</h2>
-      <pre><code class="language-js">
-function isEligible(age, hasPreExistingCondition) {
-  if (age >= 18 && age <= 65 && hasPreExistingCondition === false)
-    return true;
-  else
-    return false;
-}
-      </code></pre>
-      <label>Age: <input type="number" id="age2" /></label>
-      <label>Pre-existing Condition (true/false): <input id="condition2" /></label>
+    <section class="challenge">  
+        <h2>Challenge: Optional Coverage Selection</h2>
+        <pre><code class="language-js">
+  function isCoverageSelected(input) {
+    return input === true;
+  }
+        </code></pre>
+        <label>
+          <input type="checkbox" id="coverageBox" /> Add Accident Coverage?
+        </label>
       <button onclick="runChallenge2()">Run</button>
       <pre id="output2"></pre>
       <button onclick="revealBug(2)">🔓 Reveal the Bug</button>
