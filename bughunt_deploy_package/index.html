@@ -41,11 +41,13 @@ function calculatePremium(age, isSmoker) {
     </section>
 
     <section class="challenge">  
-        <h2>Challenge: Optional Coverage Selection</h2>
+        <h2>Challenge 2: Optional Coverage Selection</h2>
         <pre><code class="language-js">
-  function isCoverageSelected(input) {
+const input = checkbox.value;
+
+function isCoverageSelected(input) {
     return input === true;
-  }
+}
         </code></pre>
         <label>
           <input type="checkbox" id="coverageBox" /> Add Accident Coverage?
@@ -70,13 +72,90 @@ function calculateCoverage(planType, baseAmount) {
   return "Invalid plan type";
 }
       </code></pre>
-      <label>Plan Type: <input id="plan3" /></label>
-      <label>Base Amount: <input type="number" id="base3" /></label>
+      <label>Plan Type: <input id="plan3" value="Premium" /></label>
+      <label>Base Amount: <input type="number" id="base3" min="1" /></label>
       <button onclick="runChallenge3()">Run</button>
       <pre id="output3"></pre>
       <button onclick="revealBug(3)">🔓 Reveal the Bug</button>
       <div id="bug3" class="bug-description"></div>
     </section>
+    <section class="challenge">
+      <h2>Challenge 4: Policy Link Generator</h2>
+      <pre><code class="language-js">
+    function makePolicyLinks(policyIds) {
+      const links = [];
+      for (var i = 0; i < policyIds.length; i++) {
+        links.push(() => "/policy/" + policyIds[i]);
+      }
+      return links.map(fn => fn());
+    }
+      </code></pre>
+    
+      <label>
+        Policy IDs (comma-separated): 
+        <input type="text" id="ids4" value="101, 102, 103" />
+      </label>
+      <button onclick="runClosureChallenge()">Run</button>
+      <pre id="output4"></pre>
+      <button onclick="revealBug(4)">🔓 Reveal the Bug</button>
+      <div id="bug4" class="bug-description"></div>
+    </section>
+
+    <section class="challenge">
+      <h2>Challenge 5: Policy Premium Calculator</h2>
+      <pre><code class="language-js">
+    function calculatePolicyPremiums(policies) {
+      return policies.map(policy => {
+        policy.premium * policy.rate;
+      });
+    }
+      </code></pre>
+    
+      <label>
+        Policies (JSON array):  
+        <input
+          type="text"
+          id="policies5"
+          value='[{"premium":1000,"rate":1.05},{"premium":2000,"rate":1.10}]'
+          style="width: 100%;"
+        />
+      </label>
+      <button onclick="runPremiumMapChallenge()">Run</button>
+      <pre id="output5"></pre>
+      <button onclick="revealBug(5)">🔓 Reveal the Bug</button>
+      <div id="bug5" class="bug-description"></div>
+    </section>
+
+    <section class="challenge">
+      <h2>Challenge 6: Primary Policy Selector</h2>
+      <p>
+        You have a list of policy objects, and exactly one is marked
+        <code>primary: true</code>. 
+        **Your function should return that single policy object**, not a list.
+      </p>
+      <pre><code class="language-js">
+    function getPrimaryPolicy(policies) {
+      return policies.filter(p => p.primary === true);
+    }
+      </code></pre>
+    
+      <label>
+        Policies (JSON array):
+        <input
+          type="text"
+          id="policiesPrimary"
+          value='[{"id":101,"primary":false},{"id":102,"primary":true}]'
+          style="width: 100%;"
+        />
+      </label>
+      <button onclick="runPrimaryChallenge()">Run</button>
+      <pre id="outputPrimary"></pre>
+      <button onclick="revealBug(6)">🔓 Reveal the Bug</button>
+      <div id="bug6" class="bug-description"></div>
+    </section>
+    
+    
+    
   </div>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
