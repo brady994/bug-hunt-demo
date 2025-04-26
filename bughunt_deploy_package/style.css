@@ -19,3 +19,21 @@ body {
 input, select, button {
   margin: 5px;
 }
+.challenge pre, 
+.challenge code {
+  /* make sure it never exceeds its container’s width */
+  max-width: 100%;
+  box-sizing: border-box;
+
+  /* wrap long lines instead of overflowing */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  /* if something really is too wide, let the user scroll */
+  overflow-x: auto;
+
+  /* optional styling to match your cards */
+  background: #f9f9f9;
+  padding: 0.5em;
+  border-radius: 4px;
+}

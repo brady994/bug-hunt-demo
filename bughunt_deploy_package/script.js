@@ -88,7 +88,7 @@ function runPrimaryChallenge() {
 
 function getPrimaryPolicy(policies) {
   // Buggy: returns an array, even if only one policy has primary === true
-  return policies.find(p => p.primary === true);
+  return policies.filter(p => p.primary === true);
 }
 
 
